@@ -7,6 +7,8 @@ import Bus from './pages/bus/Bus';
 import Detail from './pages/bus/detail';
 import Checkout from './pages/checkout/Checkout';
 import BookTicket from './pages/bookticket/BookTicket';
+//import Sidebar from './components/sidebar/Sidebar';
+
 
 function App() {
    return (
@@ -14,7 +16,6 @@ function App() {
          <Router>
             <div className="w-full min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-300 flex flex-col overflow-hidden">
                <Navbar />
-
                <Routes>
                   <Route path="/" element={<HomeContainer />} />
                   <Route path="/bookticket/bus" element={<Bus />} />
@@ -34,3 +35,5 @@ function App() {
 }
 
 export default App;
+
+<Router>  </Router>

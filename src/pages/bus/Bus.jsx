@@ -1,260 +1,143 @@
 import React from 'react';
-import Bus2 from '../../assets/bus.png';
-import Bus1 from '../../assets/bus1.png';
-import Bus3 from '../../assets/bus5.png';
-import Bus4 from '../../assets/bus4.png';
-import Bus5 from '../../assets/bus7.png';
-import Bus6 from '../../assets/bus6.png';
-
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Bus1 from '../../assets/bus1.png'; // Example image
 
-const Bus = ({item}) => {
+const Bus = () => {
    return (
-      <div className="w-full lg:px-28 md:px-16 sm:px-7 mt-[13ch] px-4 mb-[8ch] space-y-14">
-         
-         <div className="w-full grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px py-5 items-center justify-around">
-            <div className="flex items-center gap-x-2.5 col-span-2">
-               <input
-                  type="text"
-                  id="seat"
-                  placeholder="Search buses..."
-                  name="searchbus"
-                  className="w-full apperance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900"
-               />
-               <button className="bg-violet-600 h-11 px-4 rounded-md text-base text-neutral-50 font-normal">
-                  <FaSearch />
-               </button>
-            </div>
-
-            <div className="col-span-2">
-               <select className="w-full apperance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900">
+      <div className="flex flex-col lg:flex-row w-full lg:px-28 md:px-16 sm:px-7 mt-[13ch] px-4 mb-[8ch] space-y-12 lg:space-y-0 lg:space-x-12">
+         {/* Sidebar for Filters */}
+         <aside className="w-full lg:w-1/4 bg-neutral-200/60 dark:bg-neutral-900/40 p-4 rounded-md space-y-6">
+            <div>
+               <h3 className="text-lg font-medium mb-2">Bus Type</h3>
+               <select className="w-full appearance-none text-neutral-800 dark:text-neutral-100 bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900">
                   <option value="">Select Bus Type</option>
-                  <option value="touristbus">Tourist Bus</option>
+                  <option value="touristbus">T.ourist Bus</option>
                   <option value="privatebus">Private Bus</option>
-                  <option value="luxerybus">Luxery Bus</option>
+                  <option value="luxurybus">Luxury Bus</option>
                   <option value="deluxebus">Deluxe Bus</option>
                </select>
             </div>
 
-            <div className="col-span-2"></div>
-         </div>
+            <div>
+               <h3 className="text-lg font-medium mb-2">Price Range</h3>
+               <input
+                  type="range"
+                  min="0"
+                  max="500"
+                  step="10"
+                  className="w-full"
+               />
+               <div className="flex justify-between text-sm mt-1">
+                  <span>FCFA0</span>
+                  <span>FCFA15000</span>
+               </div>
+            </div>
 
-         <ul className="w-full">
-            <li className="w-full my-4 grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px py-5 items-center justify-around">
-               <div className="grid grid-cols-1">
-                  <div>
-                     <img
-                        src={Bus1}
-                        alt="bus img"
-                        className="w-full aspect-video object-contain object-center"
+            <div>
+               <h3 className="text-lg font-medium mb-2">Features</h3>
+               <div className="flex flex-col space-y-3">
+                  <label className="flex items-center">
+                     <input
+                        type="checkbox"
+                        className="form-checkbox h-4 w-4 text-violet-600 border-neutral-300 dark:border-neutral-700"
                      />
-                  </div>
-                  <div className='flex justify-center items-center my-2 bg-violet-600 h-10' >Mogamo</div>
-               </div>
-               <div className="col-span-2 ">
-                  <div className="w-full flex items-center gap-y-3">
-                     <div className="w-fit text-base font-medium">
-                        From:- <span className="ml-1.5">Location 1</span>
-                     </div>
-                     <div className="flex-1">
-                        <div className="w-full h-[1px] border border-dashed border-neutral-400 dark:border-neutral-700/80"></div>
-                     </div>
-                     <div className="w-fit text-base font-medium">
-                        To:- <span className="ml-1.5">Location 4</span>
-                     </div>
-                  </div>
-                  <div className="w-fit text-base font-medium my-8">
-                     Number of seats avialable: -
-                  </div>
-               </div>
-               <div>
-                  <ul>
-                     <li className="flex justify-center items-center my-2">
-                        Option 1
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 2
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 3
-                     </li>
-                  </ul>
-               </div>
-               <div className="col-span-2 flex flex-col justify-center items-center">
-                  <Link to={'/bus/bus-details'}>
-                     <motion.button className="w-fit bg-violet-700 hover:bg-violet-800 text-neutral-50 font-medium py-3 px-24 rounded-md ease-in-out duration-300">
-                        Select Bus
-                     </motion.button>
-                  </Link>
-               </div>
-            </li>
-            <li className="w-full my-4 grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px py-5 items-center justify-around">
-            <div className="grid grid-cols-1">
-                  <div>
-                     <img
-                        src={Bus1}
-                        alt="bus img"
-                        className="w-full aspect-video object-contain object-center"
+                     <span className="ml-2">AC</span>
+                  </label>
+                  <label className="flex items-center">
+                     <input
+                        type="checkbox"
+                        className="form-checkbox h-4 w-4 text-violet-600 border-neutral-300 dark:border-neutral-700"
                      />
-                  </div>
-                  <div className='flex justify-center items-center my-2 bg-violet-600 h-10' >Buea Voyages</div>
-               </div>
-               <div className="col-span-2 ">
-                  <div className="w-full flex items-center gap-y-3">
-                     <div className="w-fit text-base font-medium">
-                        From:- <span className="ml-1.5">Location 1</span>
-                     </div>
-                     <div className="flex-1">
-                        <div className="w-full h-[1px] border border-dashed border-neutral-400 dark:border-neutral-700/80"></div>
-                     </div>
-                     <div className="w-fit text-base font-medium">
-                        To:- <span className="ml-1.5">Location 4</span>
-                     </div>
-                  </div>
-                  <div className="w-fit text-base font-medium my-8">
-                     Number of seats avialable: -
-                  </div>
-               </div>
-               <div>
-                  <ul>
-                     <li className="flex justify-center items-center my-2">
-                        Option 1
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 2
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 3
-                     </li>
-                  </ul>
-               </div>
-               <div className="col-span-2 flex flex-col justify-center items-center">
-                  <Link to={'/bus/bus-details'}>
-                     <motion.button className="w-fit bg-violet-700 hover:bg-violet-800 text-neutral-50 font-medium py-3 px-24 rounded-md ease-in-out duration-300">
-                        Select Bus
-                     </motion.button>
-                  </Link>
-               </div>
-            </li>
-            <li className="w-full my-4 grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px py-5 items-center justify-around">
-            <div className="grid grid-cols-1">
-                  <div>
-                     <img
-                        src={Bus1}
-                        alt="bus img"
-                        className="w-full aspect-video object-contain object-center"
+                     <span className="ml-2">LCD Screen</span>
+                  </label>
+                  <label className="flex items-center">
+                     <input
+                        type="checkbox"
+                        className="form-checkbox h-4 w-4 text-violet-600 border-neutral-300 dark:border-neutral-700"
                      />
-                  </div>
-                  <div className='flex justify-center items-center my-2 bg-violet-600 h-10' >United Express</div>
+                     <span className="ml-2">WiFi</span>
+                  </label>
                </div>
-               <div className="col-span-2 ">
-                  <div className="w-full flex items-center gap-y-3">
-                     <div className="w-fit text-base font-medium">
-                        From:- <span className="ml-1.5">Location 1</span>
+            </div>
+         </aside>
+
+         {/* Main Content - Bus List */}
+         <div className="w-full lg:w-3/4">
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px-4 py-5">
+               <div className="flex items-center gap-x-2.5 col-span-2 md:col-span-2">
+                  <input
+                     type="text"
+                     placeholder="Search buses..."
+                     className="w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900"
+                  />
+                  <button className="bg-violet-600 h-12 px-4 rounded-md text-base text-neutral-50">
+                     <FaSearch />
+                  </button>
+               </div>
+
+               <div className="col-span-1">
+                  <select className="w-full appearance-none text-neutral-800 dark:text-neutral-100 bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900">
+                     <option value="">Sort By</option>
+                     <option value="price">Price</option>
+                     <option value="popularity">Popularity</option>
+                  </select>
+               </div>
+            </div>
+
+            {/* Bus List Section */}
+            <ul className="w-full space-y-6 mt-6">
+               {[1, 2, 3, 4].map((bus) => (
+                  <li
+                     key={bus}
+                     className="w-full grid grid-cols-1 md:grid-cols-6 gap-6 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md p-5"
+                  >
+                     {/* Bus Image and Name */}
+                     <div className="md:col-span-2 flex flex-col items-center md:items-start">
+                        <img
+                           src={Bus1}
+                           alt="Bus"
+                           className="w-full max-w-xs aspect-video object-cover rounded-md"
+                        />
+                        <div className=" text-neutral-50 font-medium py-2 px-4 mt-3 rounded-md text-center w-full md:w-auto">
+                           Bus Name
+                        </div>
                      </div>
-                     <div className="flex-1">
-                        <div className="w-full h-[1px] border border-dashed border-neutral-400 dark:border-neutral-700/80"></div>
+
+                     {/* Bus Details */}
+                     <div className="md:col-span-3 space-y-3">
+                        <div className="w-full flex items-center">
+                           <span className="font-medium">From:</span>
+                           <span className="ml-2">Location 1</span>
+                        </div>
+                        <div className="w-full flex items-center">
+                           <span className="font-medium">To:</span>
+                           <span className="ml-2">Location 2</span>
+                        </div>
+                        <div className="w-full flex items-center">
+                           <span className="font-medium">Available Seats:</span>
+                           <span className="ml-2">10</span>
+                        </div>
                      </div>
-                     <div className="w-fit text-base font-medium">
-                        To:- <span className="ml-1.5">Location 4</span>
+
+                     {/* Action Button */}
+                     <div className="md:col-span-1 flex justify-center items-center">
+                        <Link to={'/bus/bus-details'}>
+                           <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              className=" bg-violet-700 hover:bg-violet-800 text-neutral-50 font-medium xl:mr-28 py-2 px-4 mt-3 rounded-md text-center min-w-72 md:w-auto"
+                           >
+                              Select Bus
+                           </motion.button>
+                        </Link>
                      </div>
-                  </div>
-                  <div className="w-fit text-base font-medium my-8">
-                     Number of seats avialable: -
-                  </div>
-               </div>
-               <div>
-                  <ul>
-                     <li className="flex justify-center items-center my-2">
-                        Option 1
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 2
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 3
-                     </li>
-                  </ul>
-               </div>
-               <div className="col-span-2 flex flex-col justify-center items-center">
-                  <Link to={'/bus/bus-details'}>
-                     <motion.button className="w-fit bg-violet-700 hover:bg-violet-800 text-neutral-50 font-medium py-3 px-24 rounded-md ease-in-out duration-300">
-                        Select Bus
-                     </motion.button>
-                  </Link>
-               </div>
-            </li>
-            <li className="w-full my-4 grid grid-cols-6 gap-14 bg-neutral-200/60 dark:bg-neutral-900/40 rounded-md px py-5 items-center justify-around">
-            <div className="grid grid-cols-1">
-                  <div>
-                     <img
-                        src={Bus1}
-                        alt="bus img"
-                        className="w-full aspect-video object-contain object-center"
-                     />
-                  </div>
-                  <div className='flex justify-center items-center my-2 bg-violet-600 h-10' >Musango</div>
-               </div>
-               <div className="col-span-2 ">
-                  <div className="w-full flex items-center gap-y-3">
-                     <div className="w-fit text-base font-medium">
-                        From:- <span className="ml-1.5">Location 1</span>
-                     </div>
-                     <div className="flex-1">
-                        <div className="w-full h-[1px] border border-dashed border-neutral-400 dark:border-neutral-700/80"></div>
-                     </div>
-                     <div className="w-fit text-base font-medium">
-                        To:- <span className="ml-1.5">Location 4</span>
-                     </div>
-                  </div>
-                  <div className="w-fit text-base font-medium my-8">
-                     Number of seats avialable: -
-                  </div>
-               </div>
-               <div>
-                  <ul>
-                     <li className="flex justify-center items-center my-2">
-                        Option 1
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 2
-                     </li>
-                     <li className="flex justify-center items-center my-2">
-                        Option 3
-                     </li>
-                  </ul>
-               </div>
-               <div className="col-span-2 flex flex-col justify-center items-center">
-                  <Link to={'/bus/bus-details'}>
-                     <motion.button className="w-fit bg-violet-700 hover:bg-violet-800 text-neutral-50 font-medium py-3 px-24 rounded-md ease-in-out duration-300">
-                        Select Bus
-                     </motion.button>
-                  </Link>
-               </div>
-            </li>
-         </ul>
+                  </li>
+               ))}
+            </ul>
+         </div>
       </div>
    );
 };
 
 export default Bus;
-
-{
-   /* <Link to={"/bus/bus-details"} className='w-full bg-neutral-200/60 block dark:bg-neutral-900/40 rounded-xl p-4'></Link>
-          <img src={Bus1} alt="bus img" className="w-11 aspect-video object-contain object-center" />
-          <div className="px-3 py-4 space-y-2">
-            <div className="flex items-center justify-between">
-              <h1 className="text-xl font-semibold text-neutral-800 dark:text-neutral-50">
-                Common Bus
-              </h1>
-              <div className="text-sm font-normal text-neutral-800 dark:text-neutral-50">
-                60 passengers
-              </div>
-            </div>
-          </div>
-        </Link> 
-        
-        */
-}
