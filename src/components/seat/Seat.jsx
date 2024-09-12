@@ -125,7 +125,7 @@ const BusSeatLayout = () => {
             <div className="mt-10">
                <h3 className="text-lg font-bold">Total Fare:</h3>
                <p className="text-lg font-medium">
-                  Rs. {selectedSeats.length * 10000}
+                  FCFA. {selectedSeats.length * 10000}
                </p>
                <span className="text-sm text-neutral-400 dark:text-neutral-600 font-normal">
                   (Including all taxes)

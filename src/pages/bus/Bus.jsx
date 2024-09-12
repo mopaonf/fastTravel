@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Bus1 from '../../assets/bus1.png'; // Example image
 
 const Bus = () => {
+   const [priceRange, setPriceRange] = useState({ min: 0, max: 500 });
+   const [selectedPrice, setSelectedPrice] = useState(500);
+
+   const handlePriceChange = (event) => {
+      const value = event.target.value;
+      setSelectedPrice(value);
+      setPriceRange({ ...priceRange, max: value });
+   };
+
    return (
       <div className="flex flex-col lg:flex-row w-full lg:px-28 md:px-16 sm:px-7 mt-[13ch] px-4 mb-[8ch] space-y-12 lg:space-y-0 lg:space-x-12">
          {/* Sidebar for Filters */}
@@ -13,10 +22,9 @@ const Bus = () => {
                <h3 className="text-lg font-medium mb-2">Bus Type</h3>
                <select className="w-full appearance-none text-neutral-800 dark:text-neutral-100 bg-neutral-100/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:bg-neutral-100 dark:focus:bg-neutral-900">
                   <option value="">Select Bus Type</option>
-                  <option value="touristbus">T.ourist Bus</option>
-                  <option value="privatebus">Private Bus</option>
-                  <option value="luxurybus">Luxury Bus</option>
-                  <option value="deluxebus">Deluxe Bus</option>
+                  <option value="touristbus">Common Bus</option>
+                  <option value="touristbus">VIP Bus</option>
+                  <option value="privatebus">Premium VIP Bus</option>
                </select>
             </div>
 
@@ -24,18 +32,21 @@ const Bus = () => {
                <h3 className="text-lg font-medium mb-2">Price Range</h3>
                <input
                   type="range"
-                  min="0"
-                  max="500"
-                  step="10"
+                  min="5000"
+                  max="15000"
+                  step="1000"
+                  value={selectedPrice}
+                  onChange={handlePriceChange}
                   className="w-full"
                />
                <div className="flex justify-between text-sm mt-1">
-                  <span>FCFA0</span>
-                  <span>FCFA15000</span>
+                  <span>FCFA5000</span>
+                  <span>FCFA{selectedPrice}</span>
                </div>
             </div>
 
-            <div>
+            {/* Uncomment and add your features section if needed */}
+            {/* <div>
                <h3 className="text-lg font-medium mb-2">Features</h3>
                <div className="flex flex-col space-y-3">
                   <label className="flex items-center">
@@ -60,7 +71,7 @@ const Bus = () => {
                      <span className="ml-2">WiFi</span>
                   </label>
                </div>
-            </div>
+            </div> */}
          </aside>
 
          {/* Main Content - Bus List */}
@@ -100,20 +111,23 @@ const Bus = () => {
                            alt="Bus"
                            className="w-full max-w-xs aspect-video object-cover rounded-md"
                         />
-                        <div className=" text-neutral-50 font-medium py-2 px-4 mt-3 rounded-md text-center w-full md:w-auto">
+                        <div className="font-medium py-2 px-4 mt-3 rounded-md text-center w-full md:w-auto">
                            Bus Name
                         </div>
                      </div>
 
                      {/* Bus Details */}
                      <div className="md:col-span-3 space-y-3">
-                        <div className="w-full flex items-center">
-                           <span className="font-medium">From:</span>
-                           <span className="ml-2">Location 1</span>
+                        <div className="w-full flex items-center justify-between pr-44">
+                           <span className="ml-2">From: Location 1</span>
+                           <span className="ml-2">To: Location 2</span>
+                        </div>
+                        <div className="w-full flex items-center justify-between pr-44">
+                           <span className="ml-2">Departure: 08:00 AM</span>
+                           <span className="ml-2">Arrival: 06:00 PM</span>
                         </div>
                         <div className="w-full flex items-center">
-                           <span className="font-medium">To:</span>
-                           <span className="ml-2">Location 2</span>
+                           <span className="font-medium"></span>
                         </div>
                         <div className="w-full flex items-center">
                            <span className="font-medium">Available Seats:</span>
